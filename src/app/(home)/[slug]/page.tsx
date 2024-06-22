@@ -1,8 +1,7 @@
 import React from "react";
-import Home from "./(home)/Home";
 
 const page = () => {
-  return <Home />;
+  return <div>This page doesn't exist</div>;
 };
 
 export default page;
