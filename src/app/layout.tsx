@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Caveat } from "next/font/google";
 import { Header, Footer } from "./global-components/exports";
 import "./globals.css";
-const inter = Inter({ subsets: ["latin"] });
+const caveat = Caveat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-primary text-text`}>
+      <body className={`${caveat.className} bg-primary text-text`}>
         <Header />
         {children}
         <Footer />

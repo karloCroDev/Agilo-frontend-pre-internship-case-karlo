@@ -12,9 +12,8 @@ const config: Config = {
         primary: "#222831",
         secondary: "#393E46",
         text: "#EEEEEE",
-        buttons: "#00AD85",
+        buttons: "#00ADB5",
       },
-      fontFamily: {},
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
