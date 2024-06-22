@@ -1,9 +1,12 @@
+"use client";
 import React from "react";
+
 import { FaSearch } from "react-icons/fa";
+import { MdKeyboardDoubleArrowDown } from "react-icons/md"; //try to implement it if possible
 
 const Filters = () => {
   return (
-    <section className="flex justify-between">
+    <div className="flex justify-between">
       <div className="w-full relative items-center">
         <input
           type="text"
@@ -13,14 +16,19 @@ const Filters = () => {
         <FaSearch className="absolute text-text text-lg top-4 left-3.5" />
       </div>
 
-      <select id="category">
-        <option value="e">A</option>
-        <option value="d">B</option>
-        <option value="a">C</option>
-        <option value="b">D</option>
-        <option value="c">E</option>
+      <select
+        id="category"
+        className="bg-buttons h-12 rounded-md text-text flex justify-between w-52 focus:outline-none"
+      >
+        <option>
+          <h3 className="text-text text-xl">Category</h3>
+        </option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+        <option>E</option>
       </select>
-    </section>
+    </div>
   );
 };
 
