@@ -1,4 +1,4 @@
-"ise client";
+"use client";
 /* I decided to use useContext for global state mangament, because imo redux,
  zustand etc. is overkill for this type of project since this is small application*/
 
