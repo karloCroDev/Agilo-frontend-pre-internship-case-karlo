@@ -7,7 +7,9 @@ so I decided to create component for section titles because they will
 import React from "react";
 
 const SectionTitles = ({ children }: { children: string }) => {
-  return <h2 className="text-3xl underline font-semibold ">{children}</h2>;
+  return (
+    <h2 className="text-3xl underline font-semibold flex-span ">{children}</h2>
+  );
 };
 
 export default SectionTitles;

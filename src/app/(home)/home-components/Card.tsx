@@ -30,7 +30,7 @@ const Card = ({ id, title, thumbnail, price }: CardTypesData) => {
           <img
             loading="lazy"
             src={thumbnail}
-            className="flex-[4] w-full h-full object-contain bg-white"
+            className="flex-[4] w-full h-full object-cover bg-black"
           />
 
           {/* Image here */}

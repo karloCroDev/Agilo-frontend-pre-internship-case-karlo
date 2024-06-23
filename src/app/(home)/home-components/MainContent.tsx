@@ -23,34 +23,72 @@ const getDummyDataGrid = async (): Promise<FetchData> => {
 
 const MainContent = async () => {
   const data = await getDummyDataGrid();
+  // const beauty=data?.filter(item=>item.category==='beauty')
+  // const fragrances=data?.filter(item=>item.category==='fragrances')
+  // const furniture=data?.filter(item=>item.category==='furniture')
+  // const groceries=data?.filter(item=>item.category==='groceries')
+  // const homeDecoration=data?.filter(item=>item.category==='home-decoration')
+  // const kitchenAccessories=data?.filter(item=>item.category==='kitchen-accessories')
+  // const laptops=data?.filter(item=>item.category==='laptops')
+  // const mensShirts=data?.filter(item=>item.category==='mens-shirts')
+  // const mensShoes=data?.filter(item=>item.category==='mens-shoes')
+  // const mensWatches=data?.filter(item=>item.category==='mens-watches')
 
-  ///
-  let checker: string = "";
+  const categories: any = Array.from(
+    new Set(data?.map((item) => item.category))
+  );
+  let sectionItems: [][] = [];
+  let temporaryStorage: any = [];
+  let check = "";
+
+  //Universal algorithm to sort items
+  if (data !== null) {
+    //boring ts 😑
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].category != check) {
+        sectionItems.push(temporaryStorage);
+        temporaryStorage = [];
+      }
+      temporaryStorage.push(data[i]);
+      check = data[i].category!;
+    }
+  }
+
+  {
+    /* <Card
+    id={item.id}
+    title={item.title}
+    thumbnail={item.thumbnail}
+    price={item.price}
+    key={item.id}
+  /> */
+  }
   return (
     <>
-      <div className="grid grid-cols-3 gap-y-10 2xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1">
-        {data?.map((item: CardTypesData) => {
-          let state = item.category != checker; // Essentially checks the category (I think this is the easiest and most sophisticated approach)
-          checker = item.category!;
-          return (
-            <>
-              {/* <SectionTitles>
-                {state
-                  ? item.category![0].toUpperCase() +
-                    item.category!.substring(1)
-                  : ""}
-              </SectionTitles> */}
-              <Card
-                id={item.id}
-                title={item.title}
-                thumbnail={item.thumbnail}
-                price={item.price}
-                key={item.id}
-              />
-            </>
-          );
-        })}
-      </div>
+      {sectionItems.map((items: [], i: number) => {
+        return (
+          <>
+            <SectionTitles>
+              {i < 1
+                ? null
+                : categories[i - 1][0]?.toUpperCase() +
+                  categories[i - 1]?.substring(1)}
+            </SectionTitles>
+
+            <div className="grid grid-cols-3 gap-y-10 2xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 place-items-center">
+              {items.map((item: CardTypesData) => (
+                <Card
+                  id={item.id}
+                  title={item.title}
+                  thumbnail={item.thumbnail}
+                  price={item.price}
+                  key={item.id}
+                />
+              ))}
+            </div>
+          </>
+        );
+      })}
     </>
   );
 };
