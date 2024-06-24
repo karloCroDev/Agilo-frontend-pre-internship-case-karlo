@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { Caveat } from "next/font/google";
-import { Header, Footer } from "./global-components/exports";
+import { Caveat, Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
+import { Header, Footer, ScrollToTopBtn } from "./global-components/exports";
 import Logic from "./contexes/Logic";
 import "./globals.css";
-import ScrollToTopBtn from "./global-components/ScrollToTopBtn";
+
 const caveat = Caveat({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,6 +27,17 @@ export default function RootLayout({
           <Footer />
           <ScrollToTopBtn />
         </Logic>
+        <Toaster
+          position="bottom-left"
+          toastOptions={{
+            style: {
+              background: "#00ADB5",
+              color: "#EEE",
+              fontSize: 22,
+              fontWeight: "bold",
+            },
+          }}
+        />
       </body>
     </html>
   );

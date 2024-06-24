@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
-
 import { FaSearch } from "react-icons/fa";
+import { MdKeyboardDoubleArrowDown } from "react-icons/md"; //See if I am going to remove select element
+
 import { DefaultMargin, SectionTitles } from "../../customs/exports";
 import { logicContextChecker } from "../../contexes/Logic";
 const Filters = () => {
-  const { setSearch } = logicContextChecker();
+  const { setSearch, categoriesG } = logicContextChecker();
   return (
     <>
       <SectionTitles>Additional filters</SectionTitles>
@@ -21,18 +22,15 @@ const Filters = () => {
             <FaSearch className="absolute text-text text-lg top-4 left-3.5" />
           </div>
 
-          <select
-            id="category"
-            className="bg-buttons h-12 rounded-md text-text flex justify-between w-52 focus:outline-none"
-          >
+          <select className="bg-buttons h-12 rounded-md text-text flex justify-between w-52 focus:outline-none text-lg font-semibold px-1 remove-arrow">
             <option>
-              Category
+              All items
               {/* <h3 className="text-text text-xl">Category</h3> */}
             </option>
-            <option>B</option>
-            <option>C</option>
-            <option>D</option>
-            <option>E</option>
+
+            {categoriesG.map((item: string) => (
+              <option>{item[0]?.toUpperCase() + item?.substring(1)}</option>
+            ))}
           </select>
         </div>
       </DefaultMargin>

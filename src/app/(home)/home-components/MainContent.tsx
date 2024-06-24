@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import { DefaultMargin, SectionTitles } from "../../customs/exports";
 import { CardTypesData } from "./apiCallsTypes";
@@ -20,12 +20,18 @@ import { logicContextChecker } from "../../contexes/Logic";
 ///////////////////////////////////////////////////
 
 const MainContent = ({ data }: { data: CardTypesData[] | null }) => {
-  const { search } = logicContextChecker();
+  const { search, setCategoriesG } = logicContextChecker();
 
   ///////////////////////////////////////
   const categories: any = Array.from(
     new Set(data?.map((item) => item.category))
   );
+  ////
+  useEffect(() => {
+    //Because I am rendering component
+    setCategoriesG(categories!);
+  }, []);
+  ////
   let sectionItems: [][] = [];
   let temporaryStorage: any = [];
   let check = "";

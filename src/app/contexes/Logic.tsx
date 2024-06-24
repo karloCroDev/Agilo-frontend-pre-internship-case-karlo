@@ -1,6 +1,8 @@
 "use client";
 /* I decided to use useContext for global state mangament, because imo redux,
  zustand etc. is overkill for this type of project since this is small application*/
+import { toast } from "react-hot-toast";
+//////////////////
 
 /*Btw even though this wrraps whole app inside the use client, server components are still mounted on sever (link documnetation or smth like that)*/
 import React, { createContext, useContext, useEffect, useState } from "react";
@@ -10,18 +12,29 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 type CheckProps = {
   search: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
+  toastFn: (state: "success" | "error", text: string) => void;
+  categoriesG: string[];
+  setCategoriesG: React.Dispatch<React.SetStateAction<string[]>>;
 };
-export const LogicCntx = createContext<CheckProps | null>(null);
+const LogicCntx = createContext<CheckProps | null>(null);
 
 const Logic = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  //Filter
   const [search, setSearch] = useState<string>("");
-
+  const [categoriesG, setCategoriesG] = useState<string[]>([]);
+  console.log(categoriesG);
+  //Global
+  const toastFn = (state: "success" | "error", text: string): void => {
+    toast[state](text, { duration: 4000 });
+  };
   return (
-    <LogicCntx.Provider value={{ search, setSearch }}>
+    <LogicCntx.Provider
+      value={{ search, setSearch, toastFn, categoriesG, setCategoriesG }}
+    >
       {children}
     </LogicCntx.Provider>
   );
