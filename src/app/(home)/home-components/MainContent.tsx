@@ -20,7 +20,7 @@ import { logicContextChecker } from "../../contexes/Logic";
 ///////////////////////////////////////////////////
 
 const MainContent = ({ data }: { data: CardTypesData[] | null }) => {
-  const { search, setCategoriesG } = logicContextChecker();
+  const { search, setCategoriesG, sort } = logicContextChecker();
 
   ///////////////////////////////////////
   const categories: any = Array.from(
@@ -29,7 +29,7 @@ const MainContent = ({ data }: { data: CardTypesData[] | null }) => {
   ////
   useEffect(() => {
     //Because I am rendering component
-    setCategoriesG(categories!);
+    setCategoriesG(categories);
   }, []);
   ////
   let sectionItems: [][] = [];
@@ -52,8 +52,10 @@ const MainContent = ({ data }: { data: CardTypesData[] | null }) => {
   return (
     <>
       {sectionItems.map((items: [], i: number) => {
-        const filteredItems = items.filter((item: CardTypesData) =>
-          item.title.toLowerCase().includes(search.toLowerCase())
+        const filteredItems = items.filter(
+          (item: CardTypesData) =>
+            item.title.toLowerCase().includes(search.toLowerCase()) &&
+            item.category?.includes(sort)
         );
         return (
           <>

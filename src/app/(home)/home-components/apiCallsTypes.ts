@@ -6,3 +6,10 @@ export type CardTypesData = {
   category?: string;
 };
 export type FetchData = CardTypesData[] | null;
+
+export type Slug = {
+  params: {
+    slug: number;
+  };
+};
+export type FetchProductData = {};

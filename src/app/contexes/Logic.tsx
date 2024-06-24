@@ -15,6 +15,8 @@ type CheckProps = {
   toastFn: (state: "success" | "error", text: string) => void;
   categoriesG: string[];
   setCategoriesG: React.Dispatch<React.SetStateAction<string[]>>;
+  sort: string;
+  setSort: React.Dispatch<React.SetStateAction<string>>;
 };
 const LogicCntx = createContext<CheckProps | null>(null);
 
@@ -26,6 +28,7 @@ const Logic = ({
   //Filter
   const [search, setSearch] = useState<string>("");
   const [categoriesG, setCategoriesG] = useState<string[]>([]);
+  const [sort, setSort] = useState<string>("");
   console.log(categoriesG);
   //Global
   const toastFn = (state: "success" | "error", text: string): void => {
@@ -33,7 +36,15 @@ const Logic = ({
   };
   return (
     <LogicCntx.Provider
-      value={{ search, setSearch, toastFn, categoriesG, setCategoriesG }}
+      value={{
+        search,
+        setSearch,
+        toastFn,
+        categoriesG,
+        setCategoriesG,
+        sort,
+        setSort,
+      }}
     >
       {children}
     </LogicCntx.Provider>
