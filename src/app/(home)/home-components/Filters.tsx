@@ -2,7 +2,6 @@
 import React from "react";
 
 import { FaSearch } from "react-icons/fa";
-import { MdKeyboardDoubleArrowDown } from "react-icons/md"; //try to implement it if possible
 import { DefaultMargin, SectionTitles } from "../../customs/exports";
 import { logicContextChecker } from "../../contexes/Logic";
 const Filters = () => {

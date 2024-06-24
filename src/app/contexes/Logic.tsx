@@ -3,7 +3,7 @@
  zustand etc. is overkill for this type of project since this is small application*/
 
 /*Btw even though this wrraps whole app inside the use client, server components are still mounted on sever (link documnetation or smth like that)*/
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 //*Explain better this part of app (defienetly most confusing)
 

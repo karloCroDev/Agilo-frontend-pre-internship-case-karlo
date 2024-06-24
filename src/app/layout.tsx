@@ -3,6 +3,7 @@ import { Caveat } from "next/font/google";
 import { Header, Footer } from "./global-components/exports";
 import Logic from "./contexes/Logic";
 import "./globals.css";
+import ScrollToTopBtn from "./global-components/ScrollToTopBtn";
 const caveat = Caveat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <ScrollToTopBtn />
         </Logic>
       </body>
     </html>
