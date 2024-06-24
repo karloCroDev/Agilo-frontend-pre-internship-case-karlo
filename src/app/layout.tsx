@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Caveat } from "next/font/google";
 import { Header, Footer } from "./global-components/exports";
+import Logic from "./contexes/Logic";
 import "./globals.css";
 const caveat = Caveat({ subsets: ["latin"] });
 
@@ -17,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${caveat.className} bg-primary text-text`}>
-        <Header />
-        {children}
-        <Footer />
+        <Logic>
+          <Header />
+          {children}
+          <Footer />
+        </Logic>
       </body>
     </html>
   );

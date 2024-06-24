@@ -8,8 +8,8 @@ import React, { createContext, useContext, useState } from "react";
 //*Explain better this part of app (defienetly most confusing)
 
 type CheckProps = {
-  test: string;
-  setTest: React.Dispatch<React.SetStateAction<string>>;
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
 };
 export const LogicCntx = createContext<CheckProps | null>(null);
 
@@ -18,9 +18,10 @@ const Logic = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const [test, setTest] = useState<string>("");
+  const [search, setSearch] = useState<string>("");
+
   return (
-    <LogicCntx.Provider value={{ test, setTest }}>
+    <LogicCntx.Provider value={{ search, setSearch }}>
       {children}
     </LogicCntx.Provider>
   );
@@ -29,9 +30,9 @@ const Logic = ({
 export default Logic;
 
 //Custom hook that checks if LogicCntx is used inside the Logic component (mandatory, even though I am wrapping the whole app with this)
-const logicContextChecker = () => {
+export const logicContextChecker = () => {
   const cntx = useContext(LogicCntx);
-  if (!cntx) console.log("this fn must be inside of this");
+  if (!cntx) throw new Error("this fn must be inside of this");
 
   return cntx;
 };

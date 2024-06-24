@@ -4,8 +4,9 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { MdKeyboardDoubleArrowDown } from "react-icons/md"; //try to implement it if possible
 import { DefaultMargin, SectionTitles } from "../../customs/exports";
-
+import { logicContextChecker } from "../../contexes/Logic";
 const Filters = () => {
+  const { setSearch } = logicContextChecker();
   return (
     <>
       <SectionTitles>Additional filters</SectionTitles>
@@ -14,6 +15,7 @@ const Filters = () => {
           <div className="w-full relative items-center">
             <input
               type="text"
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Search for wanted item..."
               className="bg-secondary rounded-full h-12 w-70 placeholder:text-text ps-10 focus:outline-none"
             />

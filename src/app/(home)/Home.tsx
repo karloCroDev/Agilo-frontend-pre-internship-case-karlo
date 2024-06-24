@@ -1,16 +1,33 @@
 import React from "react";
 import { Card, Filters, MainContent } from "./home-components/exports";
+import { FetchData, CardTypesData } from "./home-components/apiCallsTypes";
 
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
-const Home = () => {
+//Utilizing ssr, for better perofrmanse
+const getDummyDataGrid = async (): Promise<FetchData> => {
+  try {
+    const call = await fetch(
+      "https://dummyjson.com/products?limit=98&select=id,title,thumbnail,price,category"
+    );
+
+    const data = await call.json();
+    return data.products;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+const Home = async () => {
+  const data = await getDummyDataGrid();
+
   return (
-    <div className={`${inter.className} grid place-items-center`}>
-      <div className="w-1/2 mt-5 flex flex-col gap-5">
+    <div className={`${inter.className} grid place-items-center pb-20`}>
+      <div className="w-1/2  flex flex-col gap-5 mt-[150px]">
         {/* Chnage the width do not make it 3/4 (temporary solution) */}
         <Filters />
-        <MainContent />
+        <MainContent data={data} />
       </div>
     </div>
   );

@@ -2,9 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-    So the explanation for my utility class is the 
-*/
-.font-caveat {
-  font-family: "Caveat", cursive;
+/* I can't chnage the scrollbar with tailwind css (correct me if I am wrong), so I guess I have to do it the old way */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #00adb5;
+
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #36686b;
 }

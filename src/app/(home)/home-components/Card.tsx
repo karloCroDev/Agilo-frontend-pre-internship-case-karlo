@@ -18,7 +18,7 @@ const Card = ({ id, title, thumbnail, price }: CardTypesData) => {
   return (
     <>
       <Link href={id.toString()}>
-        <div className="group aspect-[3/4] h-[30rem] bg-secondary rounded-3xl drop-shadow-lg flex flex-col cursor-pointer">
+        <div className="group aspect-[3/4] h-[30rem] bg-secondary rounded-3xl drop-shadow-lg flex flex-col cursor-pointer ">
           <div className="flex-1 w-full pl-4 flex align items-center">
             <h2
               className={`${caveat.className} text-4xl font-semibold group-hover:text-buttons transition-all`}
