@@ -26,6 +26,7 @@ const MainContent = ({ data }: { data: CardTypesData[] | null }) => {
   const categories: any = Array.from(
     new Set(data?.map((item) => item.category))
   );
+  categories.pop();
   ////
   useEffect(() => {
     //Because I am rendering component
@@ -68,7 +69,7 @@ const MainContent = ({ data }: { data: CardTypesData[] | null }) => {
                       categories[i - 1]?.substring(1)}
                 </SectionTitles>
 
-                <div className="grid grid-cols-3 gap-y-10 2xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 place-items-center">
+                <div className="grid grid-cols-3 gap-y-10 2xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 place-items-center border-b border-secondary pb-6">
                   {filteredItems.map((item: CardTypesData) => {
                     return (
                       <Card

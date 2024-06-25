@@ -24,7 +24,7 @@ const Home = async () => {
 
   return (
     <div className={`${inter.className} grid place-items-center pb-20`}>
-      <div className="w-1/2  flex flex-col gap-5 mt-[150px]">
+      <div className="w-[1600px]  flex flex-col gap-6 mt-[150px] ">
         {/* Chnage the width do not make it 3/4 (temporary solution) */}
         <Filters />
         <MainContent data={data} />

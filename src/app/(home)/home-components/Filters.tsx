@@ -24,7 +24,7 @@ const Filters = () => {
           </div>
 
           <select
-            className="bg-buttons h-12 rounded-md text-text flex justify-between w-52 focus:outline-none text-lg font-semibold px-1 remove-arrow"
+            className="bg-buttons h-12 rounded-md text-text flex justify-between w-52 focus:outline-none text-lg font-semibold px-1 remove-arrow cursor-pointer"
             onChange={(e) => setSort(e.target.value)}
           >
             <option value="">

@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Caveat, Inter } from "next/font/google";
+import { Caveat } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import { Header, Footer, ScrollToTopBtn } from "./global-components/exports";
 import Logic from "./contexes/Logic";
 import "./globals.css";
 
 const caveat = Caveat({ subsets: ["latin"] });
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={`${caveat.className} bg-primary text-text`}>
         <Logic>
           <Header />
