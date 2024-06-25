@@ -30,7 +30,11 @@ const page = async (id: Slug) => {
   return (
     <div className="ml-auto mr-auto flex items-center flex-col gap-10 w-[1600px] pb-20">
       <section className="w-full flex justify-center gap-20  mt-[150px] ">
-        <ProductImages images={data.images} price={data.price} />
+        <ProductImages
+          images={data.images}
+          price={data.price}
+          category={data.category}
+        />
         <ProductDetails
           title={data.title}
           brand={data.brand}

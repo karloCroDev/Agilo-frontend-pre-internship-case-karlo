@@ -17,6 +17,8 @@ type CheckProps = {
   setCategoriesG: React.Dispatch<React.SetStateAction<string[]>>;
   sort: string;
   setSort: React.Dispatch<React.SetStateAction<string>>;
+  quantity: number;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
 };
 const LogicCntx = createContext<CheckProps | null>(null);
 
@@ -29,7 +31,9 @@ const Logic = ({
   const [search, setSearch] = useState<string>("");
   const [categoriesG, setCategoriesG] = useState<string[]>([]);
   const [sort, setSort] = useState<string>("");
-  console.log(categoriesG);
+
+  //Product items
+  const [quantity, setQuantity] = useState<number>(1);
   //Global
   const toastFn = (state: "success" | "error", text: string): void => {
     toast[state](text, { duration: 4000 });
@@ -44,6 +48,8 @@ const Logic = ({
         setCategoriesG,
         sort,
         setSort,
+        quantity,
+        setQuantity,
       }}
     >
       {children}

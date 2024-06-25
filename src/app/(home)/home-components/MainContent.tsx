@@ -19,37 +19,41 @@ import { logicContextChecker } from "../../contexes/Logic";
 
 ///////////////////////////////////////////////////
 
+///It seems I wrote this code half-drunk. Fix this!!!!!
 const MainContent = ({ data }: { data: CardTypesData[] | null }) => {
-  const { search, setCategoriesG, sort } = logicContextChecker();
+  const { search, setCategoriesG, categoriesG, sort } = logicContextChecker();
 
   ///////////////////////////////////////
-  const categories: any = Array.from(
-    new Set(data?.map((item) => item.category))
-  );
-  categories.pop();
-  ////
+
+  const [sectionItems, setSectionItems] = useState<[][]>([]);
   useEffect(() => {
-    //Because I am rendering component
+    const categories: any = Array.from(
+      new Set(data?.map((item) => item.category))
+    );
     setCategoriesG(categories);
+
+    /////////////
+    let sectionItems: [][] = [];
+    let temporaryStorage: any = [];
+    let check = "";
+
+    //Universal algorithm to sort items through their original category
+    if (data !== null) {
+      //boring ts 😑
+      //rewrite this in forEach loop (for loop here is a but ugly)
+      data.forEach((item: CardTypesData) => {
+        if (item.category != check || item.id === data.length) {
+          sectionItems.push(temporaryStorage);
+          temporaryStorage = [];
+        }
+        temporaryStorage.push(item);
+        check = item.category!;
+      });
+    }
+    setSectionItems(sectionItems);
   }, []);
   ////
-  let sectionItems: [][] = [];
-  let temporaryStorage: any = [];
-  let check = "";
 
-  //Universal algorithm to sort items through their original category
-  if (data !== null) {
-    //boring ts 😑
-    //rewrite this in forEach loop (for loop here is a but ugly)
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].category != check) {
-        sectionItems.push(temporaryStorage);
-        temporaryStorage = [];
-      }
-      temporaryStorage.push(data[i]);
-      check = data[i].category!;
-    }
-  }
   return (
     <>
       {sectionItems.map((items: [], i: number) => {
@@ -64,9 +68,9 @@ const MainContent = ({ data }: { data: CardTypesData[] | null }) => {
               <>
                 <SectionTitles key={i}>
                   {i < 1
-                    ? null
-                    : categories[i - 1][0]?.toUpperCase() +
-                      categories[i - 1]?.substring(1)}
+                    ? ""
+                    : categoriesG[i - 1][0]?.toUpperCase() +
+                      categoriesG[i - 1]?.substring(1)}
                 </SectionTitles>
 
                 <div className="grid grid-cols-3 gap-y-10 2xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 place-items-center ">
