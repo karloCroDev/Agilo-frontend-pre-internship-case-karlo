@@ -43,11 +43,11 @@ const page = async (id: Slug) => {
         <div>
           <SectionTitles>You might also like </SectionTitles>
           <span className="text-xl text-buttons">
-            (Press shift + mouse wheel to horizontal scroll)
+            (Press shift + scroll to horizontal scroll)
           </span>
         </div>
 
-        <Recommendation category={data.category} />
+        <Recommendation category={data.category} title={data.title} />
       </div>
     </div>
   );

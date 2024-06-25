@@ -1,6 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Inter } from "next/font/google";
+import { GrPrevious } from "react-icons/gr";
+
 const inter = Inter({ subsets: ["latin"] });
 
 type ProductImagesProps = {
@@ -9,10 +11,32 @@ type ProductImagesProps = {
 };
 const ProductImages = ({ images, price }: ProductImagesProps) => {
   const [value, setValue] = useState<string>("red");
-  console.log(value);
+  const [indexIMG, setIndexIMG] = useState<number>(1);
+  useEffect(() => {
+    if (indexIMG > images.length - 1) setIndexIMG(0);
+    if (indexIMG < 0) setIndexIMG(images.length - 1);
+  }, [indexIMG]);
   return (
     <div className="flex-1 flex flex-col w-full gap-3 ">
-      <div className="w-full aspect-[4/3] bg-black rounded-3xl"></div>
+      <div className="relative">
+        <img
+          loading="lazy"
+          src={images[indexIMG]}
+          className="w-full aspect-[4/3] bg-black rounded-3xl object-contain"
+        />
+        {images.length !== 1 ? (
+          <div className="bg-black absolute right-4 bottom-4 bg-blue flex items-center border p-2 rounded-xl ">
+            <GrPrevious
+              className="size-10 cursor-pointer border-r hover:brightness-75"
+              onClick={() => setIndexIMG(indexIMG - 1)}
+            />
+            <GrPrevious
+              className="rotate-180 size-10 cursor-pointer hover:brightness-75"
+              onClick={() => setIndexIMG(indexIMG + 1)}
+            />
+          </div>
+        ) : null}
+      </div>
       <div className="px-2 flex justify-between">
         <h1 className="text-5xl font-semibold">
           <span className={`${inter.className} text-4xl `}>Price:</span>

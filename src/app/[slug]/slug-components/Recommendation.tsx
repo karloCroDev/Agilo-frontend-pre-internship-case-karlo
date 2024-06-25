@@ -5,6 +5,12 @@ import {
   FetchData,
   FetchProductData,
 } from "@/app/(home)/home-components/apiCallsTypes"; //move to global
+
+type RecoomendationProps = {
+  category: string;
+  title: string;
+};
+
 const getDummyDataRecommended = async (
   category: string
 ): Promise<FetchData> => {
@@ -20,19 +26,21 @@ const getDummyDataRecommended = async (
   }
 };
 
-const Recommendation = async ({ category }: { category: string }) => {
+const Recommendation = async ({ category, title }: RecoomendationProps) => {
   const data: CardTypesData[] | null = await getDummyDataRecommended(category);
   return (
-    <div className="w-full flex overflow-x-scroll gap-20 mt-6">
-      {data?.map((item: CardTypesData) => (
-        <Card
-          id={item.id}
-          title={item.title}
-          price={item.price}
-          thumbnail={item.thumbnail}
-          category={item.category}
-        />
-      ))}
+    <div className="w-full flex overflow-x-scroll gap-20 mt-6 ">
+      {data?.map((item: CardTypesData) =>
+        item.title !== title ? (
+          <Card
+            id={item.id}
+            title={item.title}
+            price={item.price}
+            thumbnail={item.thumbnail}
+            category={item.category}
+          />
+        ) : null
+      )}
     </div>
   );
 };
