@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Card from "./Card";
+import { Card } from "../../global-components/exports";
 import { DefaultMargin, SectionTitles } from "../../customs/exports";
 import { CardTypesData } from "./apiCallsTypes";
 import { logicContextChecker } from "../../contexes/Logic";
@@ -69,7 +69,7 @@ const MainContent = ({ data }: { data: CardTypesData[] | null }) => {
                       categories[i - 1]?.substring(1)}
                 </SectionTitles>
 
-                <div className="grid grid-cols-3 gap-y-10 2xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 place-items-center border-b border-secondary pb-6">
+                <div className="grid grid-cols-3 gap-y-10 2xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 place-items-center ">
                   {filteredItems.map((item: CardTypesData) => {
                     return (
                       <Card
@@ -82,6 +82,7 @@ const MainContent = ({ data }: { data: CardTypesData[] | null }) => {
                     );
                   })}
                 </div>
+                <hr className="border-secondary border-t-2 w-full" />
               </>
             ) : null}
           </>

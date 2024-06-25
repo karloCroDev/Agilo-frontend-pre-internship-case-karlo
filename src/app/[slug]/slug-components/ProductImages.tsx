@@ -11,15 +11,15 @@ const ProductImages = ({ images, price }: ProductImagesProps) => {
   const [value, setValue] = useState<string>("red");
   console.log(value);
   return (
-    <div className="flex-1 flex flex-col w-full gap-2">
+    <div className="flex-1 flex flex-col w-full gap-3 ">
       <div className="w-full aspect-[4/3] bg-black rounded-3xl"></div>
-      <div className="px-8 flex justify-between">
+      <div className="px-2 flex justify-between">
         <h1 className="text-5xl font-semibold">
           <span className={`${inter.className} text-4xl `}>Price:</span>
-          500€
+          {price}€
         </h1>
         <div className="flex items-center justify-center gap-6">
-          <label className="flex items-center gap-3 text-3xl font-semibold">
+          <label className="flex items-center gap-3 text-3xl font-semibold cursor-pointer">
             Red
             <input
               type="radio"
@@ -30,7 +30,7 @@ const ProductImages = ({ images, price }: ProductImagesProps) => {
             />
             <span className="size-6 bg-black rounded-full peer-checked:bg-red-500 transition-all hover:bg-secondary"></span>
           </label>
-          <label className="flex items-center gap-3 text-3xl font-semibold">
+          <label className="flex items-center gap-3 text-3xl font-semibold cursor-pointer">
             Green
             <input
               type="radio"
@@ -41,7 +41,7 @@ const ProductImages = ({ images, price }: ProductImagesProps) => {
             />
             <span className="size-6 bg-black rounded-full peer-checked:bg-green-500 transition-all hover:bg-secondary"></span>
           </label>
-          <label className="flex items-center gap-3 text-3xl font-semibold">
+          <label className="flex items-center gap-3 text-3xl font-semibold cursor-pointer">
             Blue
             <input
               type="radio"

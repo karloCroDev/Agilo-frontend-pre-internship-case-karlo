@@ -12,4 +12,11 @@ export type Slug = {
     slug: number;
   };
 };
-export type FetchProductData = {};
+export type FetchProductData = {
+  title: string;
+  brand: string;
+  price: number;
+  description: string;
+  images: string[];
+  category: string;
+};

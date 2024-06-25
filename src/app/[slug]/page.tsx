@@ -1,5 +1,8 @@
 import React from "react";
-import { Slug } from "../(home)/home-components/apiCallsTypes";
+import {
+  FetchProductData,
+  Slug,
+} from "../(home)/home-components/apiCallsTypes";
 import { SectionTitles } from "../customs/exports";
 import {
   ProductDetails,
@@ -8,25 +11,44 @@ import {
 } from "./slug-components/exports";
 const getDummyDataSpecifiedProduct = async (idOfItem: number) => {
   //Instead of using useParams, I can do this I think it's more readable
-
-  const call = await fetch(
-    `https://dummyjson.com/products/${idOfItem}?select=title,brand,price,description,images,category`
-  );
-  const data = await call.json();
-  return data;
+  try {
+    const call = await fetch(
+      `https://dummyjson.com/products/${idOfItem}?select=title,brand,price,description,images,category`
+    );
+    const data = await call.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const page = async (id: Slug) => {
-  // const data = await getDummyDataSpecifiedProduct(id.params.slug);
-  // console.log(data);
+  const data: FetchProductData = await getDummyDataSpecifiedProduct(
+    id.params.slug
+  );
+
   return (
-    <div className=" flex justify-center items-center flex-col">
-      <section className=" flex justify-center gap-10 items-center w-[1600px]  border-white border-2 mt-[150px]">
-        <ProductImages images={["ss"]} price={9} />
-        <ProductDetails title={"s"} brand={"s"} description={"s"} />
+    <div className="ml-auto mr-auto flex items-center flex-col gap-10 w-[1600px] pb-20">
+      <section className="w-full flex justify-center gap-20  mt-[150px] ">
+        <ProductImages images={data.images} price={data.price} />
+        <ProductDetails
+          title={data.title}
+          brand={data.brand}
+          description={data.description}
+        />
       </section>
-      <SectionTitles>You might also like</SectionTitles>
-      <Recommendation category="hjgj" />
+      <hr className="border-secondary border-t-2 w-full" />
+
+      <div className="self-start w-full">
+        <div>
+          <SectionTitles>You might also like </SectionTitles>
+          <span className="text-xl text-buttons">
+            (Press shift + mouse wheel to horizontal scroll)
+          </span>
+        </div>
+
+        <Recommendation category={data.category} />
+      </div>
     </div>
   );
 };

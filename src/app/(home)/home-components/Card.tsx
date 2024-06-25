@@ -4,6 +4,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 import Link from "next/link";
 import { CardTypesData } from "./apiCallsTypes";
+
 const caveat = Caveat({ subsets: ["latin"] }); //Make it from global ts component
 
 const Card = ({ id, title, thumbnail, price }: CardTypesData) => {
