@@ -28,10 +28,11 @@ const page = async (id: Slug) => {
   );
 
   return (
-    <div className="ml-auto mr-auto flex items-center flex-col gap-10 w-[1600px] pb-20">
-      <section className="w-full flex justify-center gap-20  mt-[150px] ">
+    <div className="w-10/12 ml-auto mr-auto flex items-center flex-col gap-10 pb-20 xl-[1000px] 2xl:w-[1500px]  lg:w-9/12 ">
+      <section className="w-full flex flex-col-reverse gap-2  mt-[100px] xl:gap-10 2xl:gap-10 xl:mt-[150px] xl:justify-center xl:flex-row">
         <ProductImages
           images={data.images}
+          pb-20
           price={data.price}
           category={data.category}
         />
@@ -46,8 +47,11 @@ const page = async (id: Slug) => {
       <div className="self-start w-full">
         <div>
           <SectionTitles>You might also like </SectionTitles>
-          <span className="text-xl text-buttons">
-            (Press shift + scroll to horizontal scroll)
+          <span className="text-xl sm:text-buttons hidden sm:block">
+            (Hold shift + scroll to see other items)
+          </span>
+          <span className="text-buttons sm:hidden ">
+            (Scroll to see more items)
           </span>
         </div>
 

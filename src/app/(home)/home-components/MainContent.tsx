@@ -21,22 +21,25 @@ import { logicContextChecker } from "../../contexes/Logic";
 
 ///It seems I wrote this code half-drunk. Fix this!!!!!
 const MainContent = ({ data }: { data: CardTypesData[] | null }) => {
-  const { search, setCategoriesG, categoriesG, sort } = logicContextChecker();
+  const { search, setCategoriesG, categoriesG, sort, setSearch, setSort } =
+    logicContextChecker();
 
   ///////////////////////////////////////
 
   const [sectionItems, setSectionItems] = useState<[][]>([]);
   useEffect(() => {
+    // Just when user uses title when rerouting, data in these two remains even though it shouldn't. So this just rests them
+    setSearch("");
+    setSort("");
     const categories: any = Array.from(
       new Set(data?.map((item) => item.category))
     );
-    setCategoriesG(categories);
-
     /////////////
     let sectionItems: [][] = [];
     let temporaryStorage: any = [];
     let check = "";
 
+    setCategoriesG(categories);
     //Universal algorithm to sort items through their original category
     if (data !== null) {
       //boring ts 😑
@@ -73,7 +76,7 @@ const MainContent = ({ data }: { data: CardTypesData[] | null }) => {
                       categoriesG[i - 1]?.substring(1)}
                 </SectionTitles>
 
-                <div className="grid grid-cols-3 gap-y-10 2xl:grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 place-items-center ">
+                <div className="grid gap-y-10 grid-cols-1 place-items-center xl:gap-y-16 xl:grid-cols-3 sm:grid-cols-2">
                   {filteredItems.map((item: CardTypesData) => {
                     return (
                       <Card

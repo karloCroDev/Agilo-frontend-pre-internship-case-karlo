@@ -10,7 +10,9 @@ const inter = Inter({ subsets: ["latin"] });
 
 const SectionTitles = ({ children }: { children: string }) => {
   return (
-    <h2 className={`${inter.className} text-3xl underline font-semibold `}>
+    <h2
+      className={`${inter.className} text-2xl underline font-semibold xl:text-3xl`}
+    >
       {children}
     </h2>
   );

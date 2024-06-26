@@ -29,7 +29,7 @@ const getDummyDataRecommended = async (
 const Recommendation = async ({ category, title }: RecoomendationProps) => {
   const data: CardTypesData[] | null = await getDummyDataRecommended(category);
   return (
-    <div className="w-full flex overflow-x-scroll gap-20 mt-6 ">
+    <div className="w-full flex overflow-x-scroll xl:gap-20 mt-6 gap-10 ">
       {data?.map((item: CardTypesData) =>
         item.title !== title ? (
           <Card

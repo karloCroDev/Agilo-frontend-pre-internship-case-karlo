@@ -17,20 +17,17 @@ const Filters = () => {
             <input
               type="text"
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search for wanted item..."
-              className="bg-secondary rounded-full h-12 w-70 placeholder:text-text ps-10 focus:outline-none"
+              placeholder="Search..."
+              className="bg-secondary rounded-full w-32 h-10 placeholder:text-text pl-9 placeholder:text-md focus:outline-none md:w-64 md:h-12 "
             />
-            <FaSearch className="absolute text-text text-lg top-4 left-3.5" />
+            <FaSearch className="absolute text-text text-md left-3 top-3.5 xl:top-4 sm:text-lg" />
           </div>
           <div className="relative">
             <select
-              className="bg-buttons h-12 rounded-md text-text flex justify-between w-52 text-lg font-semibold px-1 remove-arrow cursor-pointer appearance-none focus:outline-none pl-2"
+              className=" h-10 text-sm  bg-buttons rounded-md text-text flex justify-between font-semibold px-2 remove-arrow cursor-pointer appearance-none focus:outline-none pl-2 md:h-12 md:w-52 xl:text-xl"
               onChange={(e) => setSort(e.target.value)}
             >
-              <option value="">
-                All items
-                {/* <h3 className="text-text text-xl">Category</h3> */}
-              </option>
+              <option value="">All items</option>
 
               {categoriesG.map((item: string) => (
                 <option value={item}>
@@ -38,7 +35,7 @@ const Filters = () => {
                 </option>
               ))}
             </select>
-            <MdKeyboardArrowDown className="absolute right-2 top-[10px] size-7" />
+            <MdKeyboardArrowDown className="absolute right-0 top-[7px] size-7  md:top-[10px]  " />
           </div>
         </div>
       </DefaultMargin>

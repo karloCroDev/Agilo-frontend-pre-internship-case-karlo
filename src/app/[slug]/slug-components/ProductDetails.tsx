@@ -50,7 +50,7 @@ const ProductDetails = ({ title, brand, description }: ProductDetailsProps) => {
         <MdKeyboardArrowDown className="absolute right-4 top-[14px] size-10" />
       </div>
       <button
-        className={`self-center w-full font-semibold text-text  bg-buttons text-2xl h-[65px] ${inter.className} rounded-md flex justify-between items-center px-10 hover:brightness-[80%] transition-all active:scale-[98%]`}
+        className={`self-center w-full font-semibold text-text  bg-buttons text-2xl h-[65px] ${inter.className} rounded-md flex justify-between items-center px-5 hover:brightness-[80%] transition-all active:scale-[98%]`}
         onClick={() =>
           toastFn("error", "This feature soon will be implemented")
         }

@@ -8,10 +8,10 @@ const Header = () => {
   const { toastFn } = logicContextChecker();
   return (
     <nav>
-      <ul className="flex items-center justify-between px-20 h-32 w-full border-b-2 border-secondary fixed z-10 bg-primary">
+      <ul className="flex items-center justify-between h-20  w-full border-b-2 px-5 border-secondary fixed z-10 bg-primary xl:px-20 md:px-15  md:px-10  xl:h-32 ">
         <li>
           <Link href="/">
-            <h1 className={`text-5xl font-bold`}>GoofyGoods</h1>
+            <h1 className={`text-4xl font-bold xl:text-5xl`}>GoofyGoods</h1>
           </Link>
         </li>
         <li
@@ -19,7 +19,7 @@ const Header = () => {
             toastFn("error", "This feature will be implemented soon!")
           }
         >
-          <RxHamburgerMenu className="text-5xl cursor-pointer" />
+          <RxHamburgerMenu className=" text-4xl cursor-pointer xl:text-5xl " />
         </li>
       </ul>
     </nav>
