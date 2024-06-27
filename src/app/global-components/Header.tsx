@@ -14,11 +14,7 @@ const Header = () => {
             <h1 className={`text-4xl font-bold xl:text-5xl`}>GoofyGoods</h1>
           </Link>
         </li>
-        <li
-          onClick={() =>
-            toastFn("error", "This feature will be implemented soon!")
-          }
-        >
+        <li onClick={() => toastFn("error")}>
           <RxHamburgerMenu className=" text-4xl cursor-pointer xl:text-5xl " />
         </li>
       </ul>
