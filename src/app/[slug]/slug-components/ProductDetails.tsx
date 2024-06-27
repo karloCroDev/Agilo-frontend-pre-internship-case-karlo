@@ -1,24 +1,23 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsCart2 } from "react-icons/bs";
-import { Inter } from "next/font/google";
+import { inter } from "../../fonts";
 import { logicContextChecker } from "../../contexes/Logic";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
-const inter = Inter({ subsets: ["latin"] });
-
-type ProductDetailsProps = {
+interface ProductDetailsProps {
   title: string;
   brand: string;
   description: string;
-};
+}
 
 const ProductDetails = ({ title, brand, description }: ProductDetailsProps) => {
   const { toastFn, setQuantity } = logicContextChecker();
   const [numberOfItems, setNumberOfItems] = useState<number[]>([]);
   useEffect(() => {
+    //I am not retrieving from an api how many items some product has, so I've just implemented random num for that purpose
     let tempArray: number[] = [];
-    const randomNum = Math.round(Math.random() * 10) + 1; // Adjusted to get a number between 0 and 10
+    const randomNum = Math.round(Math.random() * 9) + 1; // Adjusted to get a number between 1 and 10
     for (let i = 1; i <= randomNum; i++) {
       tempArray.push(i);
     }
@@ -51,9 +50,7 @@ const ProductDetails = ({ title, brand, description }: ProductDetailsProps) => {
       </div>
       <button
         className={`self-center w-full font-semibold text-text  bg-buttons text-2xl h-[65px] ${inter.className} rounded-md flex justify-between items-center px-5 hover:brightness-[80%] transition-all active:scale-[98%]`}
-        onClick={() =>
-          toastFn("error", "This feature soon will be implemented")
-        }
+        onClick={() => toastFn("error")}
       >
         Add to cart
         <BsCart2 className="size-9" />

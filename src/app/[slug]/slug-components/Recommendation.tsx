@@ -1,15 +1,12 @@
 import React from "react";
-import Card from "../../(home)/home-components/Card";
-import {
-  CardTypesData,
-  FetchData,
-  FetchProductData,
-} from "@/app/(home)/home-components/apiCallsTypes"; //move to global
+import Card from "../../global-components/Card";
+import { CardTypesData, FetchData } from "../../global-types/apiCallTypes";
 
-type RecoomendationProps = {
+//This component displays all products in the same category except the item that has been currently displayed
+interface RecoomendationProps {
   category: string;
   title: string;
-};
+}
 
 const getDummyDataRecommended = async (
   category: string
@@ -29,7 +26,7 @@ const getDummyDataRecommended = async (
 const Recommendation = async ({ category, title }: RecoomendationProps) => {
   const data: CardTypesData[] | null = await getDummyDataRecommended(category);
   return (
-    <div className="w-full flex overflow-x-scroll xl:gap-20 mt-6 gap-10 ">
+    <div className="w-full flex overflow-x-scroll mt-6 gap-10 xl:gap-20  ">
       {data?.map((item: CardTypesData) =>
         item.title !== title ? (
           <Card

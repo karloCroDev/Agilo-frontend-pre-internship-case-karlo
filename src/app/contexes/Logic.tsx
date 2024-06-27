@@ -1,25 +1,23 @@
 "use client";
-/* I decided to use useContext for global state mangament, because imo redux,
+/* I decided to use useContext for global state managment, because imo redux,
  zustand etc. is overkill for this type of project since this is small application*/
+
+import React, { createContext, useContext, useState } from "react";
 import { toast } from "react-hot-toast";
-//////////////////
 
-/*Btw even though this wrraps whole app inside the use client, server components are still mounted on sever (link documnetation or smth like that)*/
-import React, { createContext, useContext, useEffect, useState } from "react";
-
-//*Explain better this part of app (defienetly most confusing)
-
-type CheckProps = {
+interface CheckProps {
   search: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
-  toastFn: (state: "success" | "error", text: string) => void;
+  toastFn: (state: "success" | "error") => void;
   categoriesG: string[];
   setCategoriesG: React.Dispatch<React.SetStateAction<string[]>>;
   sort: string;
   setSort: React.Dispatch<React.SetStateAction<string>>;
   quantity: number;
   setQuantity: React.Dispatch<React.SetStateAction<number>>;
-};
+  color: string;
+  setColor: React.Dispatch<React.SetStateAction<string>>;
+}
 const LogicCntx = createContext<CheckProps | null>(null);
 
 const Logic = ({
@@ -34,10 +32,15 @@ const Logic = ({
 
   //Product items
   const [quantity, setQuantity] = useState<number>(1);
+
+  //Radio button container
+  const [color, setColor] = useState<string>("Red"); //I am getting here 3 values however I specifed here string because I am 100% getting Red | Blue | Green
+
   //Global
-  const toastFn = (state: "success" | "error", text: string): void => {
-    toast[state](text, { duration: 4000 });
+  const toastFn = (state: "success" | "error"): void => {
+    toast[state]("This feature will be implemented soon!", { duration: 4000 });
   };
+
   return (
     <LogicCntx.Provider
       value={{
@@ -50,6 +53,8 @@ const Logic = ({
         setSort,
         quantity,
         setQuantity,
+        color,
+        setColor,
       }}
     >
       {children}
@@ -59,7 +64,7 @@ const Logic = ({
 
 export default Logic;
 
-//Custom hook that checks if LogicCntx is used inside the Logic component (mandatory, even though I am wrapping the whole app with this)
+//Custom hook to ensure that LogicContext is being used inside the appropriate provider
 export const logicContextChecker = () => {
   const cntx = useContext(LogicCntx);
   if (!cntx) throw new Error("this fn must be inside of this");

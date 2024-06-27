@@ -1,7 +1,7 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import ScrollToTopBtn from "./ScrollToTopBtn";
-import Card from "../(home)/home-components/Card";
+import Card from "./Card";
 export { Header, Footer, ScrollToTopBtn, Card };
 
 /*

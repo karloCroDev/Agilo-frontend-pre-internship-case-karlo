@@ -2,19 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* I can't chnage the scrollbar with tailwind css (correct me if I am wrong), so I guess I have to do it the old way */
+/* I can't change the scrollbar with tailwind css (correct me if I am wrong), so I guess I have to do it the old fashioned way  */
+/* I think the website without scrollbar looks cleaner  */
 ::-webkit-scrollbar {
   display: none;
-}
-/* See what I am going to do with scrolbar */
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #00adb5;
-
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #36686b;
 }

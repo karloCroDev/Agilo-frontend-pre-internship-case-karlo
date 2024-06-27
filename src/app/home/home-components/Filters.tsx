@@ -1,9 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { MdKeyboardArrowDown } from "react-icons/md";
-
-import { DefaultMargin, SectionTitles } from "../../customs/exports";
+import { SectionTitles } from "../../customs/exports";
 import { logicContextChecker } from "../../contexes/Logic";
 const Filters = () => {
   const { setSearch, categoriesG, setSort } = logicContextChecker();
@@ -11,7 +10,7 @@ const Filters = () => {
   return (
     <>
       <SectionTitles>Additional filters</SectionTitles>
-      <DefaultMargin>
+      <section className="w-full xl:px-5 px-2">
         <div className="flex justify-between">
           <div className="w-full relative items-center">
             <input
@@ -24,21 +23,20 @@ const Filters = () => {
           </div>
           <div className="relative">
             <select
-              className=" h-10 text-sm  bg-buttons rounded-md text-text flex justify-between font-semibold px-2 remove-arrow cursor-pointer appearance-none focus:outline-none pl-2 md:h-12 md:w-52 xl:text-xl"
+              className="h-10 text-sm bg-buttons rounded-md text-text flex justify-between font-semibold px-2 remove-arrow cursor-pointer appearance-none focus:outline-none pl-2 md:h-12 md:w-52 xl:text-xl"
               onChange={(e) => setSort(e.target.value)}
             >
               <option value="">All items</option>
-
               {categoriesG.map((item: string) => (
                 <option value={item}>
                   {item[0]?.toUpperCase() + item?.substring(1)}
                 </option>
               ))}
             </select>
-            <MdKeyboardArrowDown className="absolute right-0 top-[7px] size-7  md:top-[10px]  " />
+            <MdKeyboardArrowDown className="absolute right-0 top-[7px] size-7 md:top-[10px]  " />
           </div>
         </div>
-      </DefaultMargin>
+      </section>
     </>
   );
 };
